@@ -1,0 +1,19 @@
+.sep{
+    display: flex;
+}
+.mypagenavbtn{
+    display: flex;
+    flex-direction: column;
+}
+
+.mypagenavbtn >span {
+    display: block;
+    padding: 30px 40px;
+    background-color: aliceblue;
+    border-radius: 24px;
+    text-align: center;
+}
+nav>h2{
+    text-align: center;
+
+}

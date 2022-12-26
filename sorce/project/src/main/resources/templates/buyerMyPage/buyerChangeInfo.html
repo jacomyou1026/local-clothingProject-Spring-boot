@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="#" method="post" th:action="@{|/buyerMyPage/buyerChangeSuccess/${buyer.buyerID}|}"  th:object="${buyer}">
+<table border="1px" align="center">
+    <tr>
+        <th>아이디</th>
+        <td>
+            <input type="text" th:value="${buyer.getBuyerID()}" th:field="*{buyerID}" readonly/>
+        </td>
+        <th>비밀번호</th>
+        <td><input type="text" th:value="${buyer.getPassword()}" th:field="*{password}"/></td>
+    </tr>
+    <tr>
+        <th>닉네임</th>
+        <td><input type="text" th:value="${buyer.getNickname()}" th:field="*{nickname}"/></td>
+        <th>휴대번호</th>
+        <td><input type="text" th:value="${buyer.getPhoneNm()}" th:field="*{phoneNm}"/></td>
+    </tr>
+    <tr>
+        <th>성별</th>
+        <td><input type="text" th:value="${buyer.gender}" th:field="*{gender}" readonly/></td>
+    </tr>
+    <tr>
+        <th>주소</th>
+        <td><input type="text" th:value="${buyer.getAddress()}" th:field="*{address}"></td>
+    </tr>
+    <tr>
+        <th>키</th>
+        <td><input type="text" th:value="${buyer.getLength()}" th:field="*{length}"></td>
+        <th>몸무게</th>
+        <td><input type="text" th:value="${buyer.getWeight()}" th:field="*{weight}"></td>
+    </tr>
+    <tr>
+        <td colspan="4" align="center">
+            <input type="submit" value="수정">
+            <input type="reset" value="초기화"/>
+        </td>
+    </tr>
+
+</table>
+</form>
+
+</body>
+</html>

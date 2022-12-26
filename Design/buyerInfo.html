@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="buyerInfo.css">
+    <link th:href="@{/css/bootstrap.min.css}"
+          href="../css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="sep">
+<nav>
+    <h2>마이페이지</h2>
+    <div class="mypagenavbtn">
+        <span>내 정보 조회</span>
+        <span>내 주문 조회</span>
+        <span>내 장바구니 조회</span>
+        <span>회원탈퇴</span>
+    </div>
+</nav>
+
+<article>
+<h2>내 정보 조회</h2>
+<form action="#" method="get" th:action="@{|/buyerMyPage/buyerChangeInfo/${buyer.buyerID}|}" th:object="${buyer}">
+    <table border="1px" align="center">
+        <tr>
+            <td colspan="4" align="right">
+                <input type="submit" value="수정">
+            </td>
+        </tr>
+        <tr>
+            <th>아이디</th>
+            <td>
+                <input type="text" th:value="${buyer.getBuyerID()}" th:field="*{buyerID}" readonly/>
+            </td>
+            <th>비밀번호</th>
+            <td><input type="text" th:value="${buyer.getPassword()}" th:field="*{password}" readonly/></td>
+        </tr>
+        <tr>
+            <th>성별</th>
+            <td><input type="text" th:value="${buyer.gender}" th:field="*{gender}" readonly/></td>
+        </tr>
+        <tr>
+            <th>닉네임</th>
+            <td><input type="text" th:value="${buyer.getNickname()}" th:field="*{nickname}" readonly/></td>
+            <th>휴대번호</th>
+            <td><input type="text" th:value="${buyer.getPhoneNm()}" th:field="*{phoneNm}" readonly/></td>
+        </tr>
+        <tr>
+            <th>주소</th>
+            <td><input type="text" th:value="${buyer.getAddress()}" th:field="*{address}" readonly></td>
+        </tr>
+        <tr>
+            <th>키</th>
+            <td><input type="text" th:value="${buyer.getLength()}" th:field="*{length}" readonly></td>
+            <th>몸무게</th>
+            <td><input type="text" th:value="${buyer.getWeight()}" th:field="*{weight}" readonly></td>
+        </tr>
+
+    </table>
+</form>
+</article>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>회원탈퇴</title>
+    <link th:href="@{/css/bootstrap.min.css}"
+          href="../css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script>
+        function send(f) {
+            var id = f.id.value.trim();
+            var pwd = f.pwd.value.trim();
+
+            var sendData = "id="+id+"&pwd="+pwd;
+
+            alert(sendData);
+
+            if (id == '') {
+                alert('아이디를 입력해주세요');
+                return;
+            }
+
+            if (pwd == '') {
+                alert('비밀번호를 입력해주세요');
+                return;
+            }
+
+            $.ajax({
+                url: "/buyerMyPage/MyPagelogin",
+                data: {
+                    "buyerID": id,
+                    "password": pwd
+                },
+                method : 'GET',
+                contentType: "application/json; charset=utf-8",
+                success: function (res) {
+                    if(res == 1){
+                        alert("회원탈퇴 하겠습니다.");
+                        location.href="/buyerMyPage/del.do"+id;
+                    }else{
+                        alert("로그인 실패");
+
+                    }
+                }
+
+            });
+
+        }
+
+
+
+    </script>
+</head>
+<body>
+<h2 th:text="${buyerid}+'님 회원탈퇴하시겠습니까?'"></h2>
+<h4>*회원</h4>
+<form action="" >
+    <table border="1" align="center">
+        <tr>
+            <th>아이디</th>
+            <td><input name ="id">
+            </td>
+        </tr>
+        <tr>
+            <th>비밀번호</th>
+            <td>
+                <input type ="password" name ="pwd">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <input type="button" value ="로그인" onclick="send(this.form);">
+            </td>
+        </tr>
+    </table>
+
+</form>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.project.mapper.BuyerMyPageMapper">
+
+<!--   buyer정보-->
+    <select id="selectBuyer" resultType="BuyerMyPageDTO" parameterType="String">
+        select * from buyer where buyerid = #{buyerID}
+    </select>
+
+
+<!--    buyer개인정보 수정-->
+    <update id="updateBuyer"  parameterType="BuyerMyPageDTO" >
+        update buyer  set buyerID = #{buyerID}
+                        , nickname =#{nickname}
+                        ,password  =#{password}
+                        ,phoneNm =#{phoneNm}
+                        ,address =#{address}
+                        ,gender =#{gender}
+                        ,length=#{length}
+                        ,weight =#{weight}
+        where buyerID =#{buyerID}
+
+    </update>
+
+<!--    회원 삭제-->
+    <delete id="deleteBuyer" parameterType="String">
+        DELETE FROM buyer WHERE buyerID = #{buyer};
+    </delete>
+
+<!--    로그인 조회-->
+    <select id="mypageLogin" parameterType="BuyerMyPageDTO" resultType="BuyerMyPageDTO">
+        select * from buyer where buyerID= #{buyerID} and password= #{password};
+    </select>
+
+
+
+    
+
+
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
